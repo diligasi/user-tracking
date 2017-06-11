@@ -172,7 +172,7 @@ aside {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('/assets/bg.jpg');
+  background-image: asset-data-url('bg.jpg');
   text-align: center;
   color: white;
   .header-content {
