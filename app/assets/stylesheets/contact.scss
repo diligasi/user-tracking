@@ -1,0 +1,230 @@
+// Place all the styles related to the contact controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+hr {
+  border-color: #F05F40;
+  border-width: 3px;
+  max-width: 50px;
+  &.light {
+    border-color: white;
+  }
+}
+
+a {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  color: #F05F40;
+  &:hover, &:focus {
+    color: #eb3812;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bg-primary {
+  background-color: #F05F40;
+}
+
+.bg-dark {
+  background-color: #222222;
+  color: white;
+}
+
+.text-faded {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+section {
+  padding: 100px 0;
+}
+
+aside {
+  padding: 50px 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.navbar-default {
+  background-color: white;
+  border-color: rgba(34, 34, 34, 0.05);
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  .navbar-header {
+    .navbar-brand {
+      color: #F05F40;
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      &:hover, &:focus {
+        color: #eb3812;
+      }
+    }
+    .navbar-toggle {
+      font-weight: 700;
+      font-size: 12px;
+      color: #222222;
+      text-transform: uppercase;
+    }
+  }
+  .nav > li {
+    > a {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 13px;
+      color: #222222;
+      &:focus {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 13px;
+        color: #222222;
+      }
+      &:hover, &:focus:hover {
+        color: #F05F40;
+      }
+    }
+    &.active > a {
+      color: #F05F40 !important;
+      background-color: transparent;
+      &:focus {
+        color: #F05F40 !important;
+        background-color: transparent;
+      }
+      &:hover, &:focus:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-default {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.3);
+    .navbar-header .navbar-brand {
+      color: rgba(255, 255, 255, 0.7);
+      &:hover, &:focus {
+        color: white;
+      }
+    }
+    .nav > li > a {
+      color: rgba(255, 255, 255, 0.7);
+      &:focus {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      &:hover, &:focus:hover {
+        color: white;
+      }
+    }
+    &.affix {
+      background-color: white;
+      border-color: rgba(34, 34, 34, 0.05);
+      .navbar-header .navbar-brand {
+        color: #F05F40;
+        font-size: 14px;
+        &:hover, &:focus {
+          color: #eb3812;
+        }
+      }
+      .nav > li > a {
+        color: #222222;
+        &:focus {
+          color: #222222;
+        }
+        &:hover, &:focus:hover {
+          color: #F05F40;
+        }
+      }
+    }
+  }
+}
+
+.single {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-image: url('/assets/bg.jpg');
+  text-align: center;
+  color: white;
+  .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+    .header-content-inner {
+      h1 {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 30px;
+      }
+      hr {
+        margin: 30px auto;
+      }
+      p {
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .single {
+    min-height: 100%;
+    .header-content {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      padding: 0 50px;
+      .header-content-inner {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        h1 {
+          font-size: 50px;
+        }
+        p {
+          font-size: 18px;
+          max-width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
