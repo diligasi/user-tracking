@@ -42,11 +42,29 @@ class TrackerController < ActionController::Base
       path: _url.path,
       visited_at: Time.zone.now.to_s
     }
-    cache_contact(data)
+    # cache_contact(data)
+    create_client_path_from(data)
     JSON.dump(data)
   end
 
   def cache_contact(data)
     TrackerServices::UserDataCache.call(data)
+  end
+
+  def create_client_path_from(tracker_data)
+    clients = ContactPath.where(tracker_id: tracker_data[:id])
+                         .where(path: tracker_data[:path])
+
+    return unless clients.empty?
+
+    cp = ContactPath.new(tracker_data.except(:id))
+    cp.tracker_id = tracker_data[:id]
+
+    if cp.save
+      c = Contact.joins(:contact_paths)
+                 .where(contact_paths: { tracker_id: tracker_data[:id] }).first
+
+      c.contact_paths << cp if c
+    end
   end
 end

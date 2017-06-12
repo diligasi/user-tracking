@@ -7,7 +7,7 @@ class ClientWorker
       client_tracker_data = RedisObj::UserCache.new('captured_user').users.shift
       break if client_tracker_data.nil?
       clients = ContactPath.where(tracker_id: client_tracker_data[:id])
-                           .where(domain: client_tracker_data[:domain])
+                           .where(path: client_tracker_data[:path])
 
       create_client_path_from(client_tracker_data) if clients.empty?
     end
@@ -22,7 +22,7 @@ class ClientWorker
       c = Contact.joins(:contact_paths)
                  .where(contact_paths: { tracker_id: tracker_data[:id] }).first
 
-      c.contact_paths << cp
+      c.contact_paths << cp if c
     end
   end
 end
