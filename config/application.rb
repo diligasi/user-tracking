@@ -26,7 +26,7 @@ module UserTracking
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '/receive_user', headers: :any, methods: :post
+        resource '/cookie', headers: :any, methods: :post
       end
     end
   end

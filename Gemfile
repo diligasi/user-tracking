@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'dry-validation'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'font-awesome-sass', '~> 4.7.0'
+gem 'kaminari'
+gem 'domainatrix', '~> 0.0.11'
 
 # Assets Gems ##################################################################
 gem 'sass-rails', '~> 5.0'
