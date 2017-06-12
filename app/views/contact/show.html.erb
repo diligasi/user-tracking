@@ -1,0 +1,64 @@
+<section class="single">
+  <div class="header-content">
+    <div class="header-content-inner">
+      <div class="row">
+        <h1>Rastreamento do usuário</h1>
+        <div class="col-md-10 col-md-offset-1 glass">
+          <%= form_for @contact, url: { action: :show }, html: { id: 'contact-detail-form', class: 'form-horizontal form-label-left' } do |f| %>
+              <div class="item form-group">
+                <%= f.label :name, class: 'control-label col-md-3 col-sm-3 col-xs-12', required: true do %>
+                    Nome
+                <% end %>
+
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <%= f.text_field :name, class: 'form-control col-md-7 col-xs-12', disabled: 'disabled', value: @contact.name %>
+                </div>
+              </div>
+
+              <div class="item form-group">
+                <%= f.label :email, class: 'control-label col-md-3 col-sm-3 col-xs-12', required: true do %>
+                    E-mail
+                <% end %>
+
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12', disabled: 'disabled', value: @contact.email %>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <br />
+
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Domínio Origem</th>
+                    <th>URL</th>
+                    <th>Página Acessada</th>
+                    <th>Data/Hora Acesso</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @contact.contact_paths.each_with_index do |path, idx| %>
+                      <tr>
+                        <th><%= idx + 1 %></td>
+                        <th><%= path.domain %></td>
+                        <td><%= path.url %></td>
+                        <td><%= path.path %></td>
+                        <td><%= path.visited_at.strftime('%d/%m/%Y - %T') %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+
+              <br />
+              <%= link_to 'Voltar', root_path, class: 'btn btn-info btn-xs' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

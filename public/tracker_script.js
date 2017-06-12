@@ -2,6 +2,7 @@
 // scripts on partner's site.
 
 var CookieHandler = (function() {
+    // var serverUrl = 'http://192.168.0.111:3001/cookie',
     var serverUrl = 'https://dili-user-tracker.herokuapp.com/cookie',
         cookieName = '_client.cookie';
 
@@ -18,7 +19,7 @@ var CookieHandler = (function() {
         if (this.readyState === 4 && this.status === 200) {
             createCookie(this.responseText);
             if (window.location.pathname === '/contato') {
-                var cookie = JSON.parse(readCookie()),
+                var cookie = getCookie(),
                     input = document.createElement('input');
 
                 input.setAttribute('type', 'hidden');
@@ -30,21 +31,13 @@ var CookieHandler = (function() {
     };
 
     var createCookie = function(value) {
-        var ownerPath = '; path=' + window.location.pathname;
-        document.cookie = cookieName + '=' + value + ownerPath + ';';
+        document.cookie = cookieName + '=' + value;
     };
 
-    var readCookie = function() {
-        var cookieArr = document.cookie.split(';');
-        for(var i = 0; i < cookieArr.length; i++) {
-            var cookie = cookieArr[i];
-            while (cookie.charAt(0) == ' ') {
-                cookie = cookie.substring(1, cookie.length);
-            }
-            if (cookie.indexOf(cookieName) == 0) {
-                return cookie.substring(cookieName.length, cookie.length);
-            }
-        }
+    var getCookie = function() {
+        var re = new RegExp(cookieName + "=([^;]+)");
+        var value = re.exec(document.cookie);
+        return (value != null) ? JSON.parse(unescape(value[1])) : null;
     };
 
     var init = function() {
@@ -56,8 +49,4 @@ var CookieHandler = (function() {
     };
 })();
 
-window.addEventListener('load', function() {
-    if (document.cookie === "") {
-        CookieHandler.init();
-    }
-});
+window.addEventListener('load', CookieHandler.init);

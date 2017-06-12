@@ -27,6 +27,7 @@ module UserTracking
       allow do
         origins '*'
         resource '/cookie', headers: :any, methods: :post
+        resource '/contacts', headers: :any, methods: :post
       end
     end
   end

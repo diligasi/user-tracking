@@ -25,13 +25,18 @@ class TrackerController < ActionController::Base
   private
 
   def cookie_data
-    @cookie ||= request.cookies[COOKIE_NAME] || create_cookie
+    if @cookie
+      create_cookie(JSON.parse(@cookie)['id'])
+    else
+      @cookie = request.cookies[COOKIE_NAME] || create_cookie
+    end
   end
 
-  def create_cookie
+  def create_cookie(*uuid)
     _url = Domainatrix.parse(request.referrer)
+    _uuid = uuid.empty? ? SecureRandom.uuid : uuid[0]
     data = {
-      id: SecureRandom.uuid,
+      id: _uuid,
       url: _url.url,
       domain: [_url.domain, _url.public_suffix].join('.'),
       path: _url.path,

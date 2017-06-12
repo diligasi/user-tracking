@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611232226) do
+ActiveRecord::Schema.define(version: 20170612073225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_paths", force: :cascade do |t|
+    t.integer  "contact_id"
+    t.string   "tracker_id"
+    t.string   "domain"
+    t.string   "url"
+    t.string   "path"
+    t.datetime "visited_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_paths_on_contact_id", using: :btree
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -24,4 +36,5 @@ ActiveRecord::Schema.define(version: 20170611232226) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contact_paths", "contacts"
 end

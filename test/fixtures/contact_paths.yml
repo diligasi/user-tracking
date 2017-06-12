@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tracker_id: MyString
+  domain: MyString
+  url: MyString
+  path: MyString
+  visited_at: 2017-06-12 04:32:25
+
+two:
+  tracker_id: MyString
+  domain: MyString
+  url: MyString
+  path: MyString
+  visited_at: 2017-06-12 04:32:25
