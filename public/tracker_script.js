@@ -2,9 +2,8 @@
 // scripts on partner's site.
 
 var CookieHandler = (function() {
-    var serverUrl = 'http://localhost:3001/cookie',
+    var serverUrl = 'https://dili-user-tracker.herokuapp.com/cookie',
         cookieName = '_client.cookie';
-    // var serverUrl = 'https://dili-user-tracker.herokuapp.com/cookie',
 
     var requestServer = function() {
         var httpRequest = new XMLHttpRequest();
