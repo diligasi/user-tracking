@@ -1,5 +1,5 @@
 class ContactController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :verify_email]
 
   def index
     @contacts = Contact.order(name: :asc).page(params['page'])
@@ -14,6 +14,12 @@ class ContactController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+  end
+
+  def verify_email
+    emails = Contact.where(email: params[:email]).pluck(:email)
+    result = emails.size.zero? ? true : false
+    render json: { valid: result }
   end
 
   private
